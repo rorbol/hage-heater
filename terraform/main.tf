@@ -14,6 +14,8 @@ module "serverless" {
     branch     = "main"
   }
 
+  default_image_tag = "latest"
+
   functions = {
     away-app = {
       description = "Sets heaters to away temperature"
@@ -26,6 +28,21 @@ module "serverless" {
             path   = "/away"
             public = true
           }
+        }
+      }
+
+      environment_variables = {
+        API_URL = {
+          type  = "string"
+          value = "https://api-1.adax.no/client-api"
+        }
+        CLIENT_ID = {
+          type  = "ssm_secure_string"
+          value = "ADAX_CLIENT_ID"
+        }
+        CLIENT_SECRET = {
+          type  = "ssm_secure_string"
+          value = "ADAX_CLIENT_SECRET"
         }
       }
     }

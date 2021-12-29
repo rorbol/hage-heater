@@ -40,11 +40,12 @@ def get_homes_info(token):
 
   print("Room: %15s, Target: %5.2fC, Temperature: %5.2fC, id: %5d" % (roomName, targetTemperature, currentTemperature, room['id']))
 
-token = get_token()
+def handler(event, context):
+  token = get_token()
 
-# Change the temperature to 24 C in the room with an Id of 196342
-# set_room_target_temperature(196342, 2400, token)
+  # Change the temperature to 24 C in the room with an Id of 196342
+  # set_room_target_temperature(196342, 2400, token)
 
-# Replace the 196342 with the room id from the
-# get_homes_info output
-get_homes_info(token)
+  # Replace the 196342 with the room id from the
+  # get_homes_info output
+  get_homes_info(token)
